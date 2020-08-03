@@ -1,16 +1,15 @@
-FROM alpine:3.7
+FROM alpine:3.12
 
 RUN apk add --update \
   mongodb-tools \
-  curl \
-  python \
-  py-pip \
-  py-cffi \
+  build-base python3-dev python3 libffi-dev libressl-dev bash git gettext curl \
+  && curl -O https://bootstrap.pypa.io/get-pip.py \
+  && python3 get-pip.py \
   && pip install --upgrade pip \
+  && pip install --upgrade six awscli awsebcli \
   && apk add --virtual build-deps \
   gcc \
   libffi-dev \
-  python-dev \
   linux-headers \
   musl-dev \
   openssl-dev \
