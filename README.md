@@ -16,6 +16,7 @@ You can find the built image on [Docker Hub](https://hub.docker.com/r/takemetour
 | MONGODB_DB | NO |  | Name of the database to perform backup. Not specifying means backup all databases |
 | MONGODB_USER | NO |  | In case that your mongo instance requires authentication |
 | MONGODB_PASSWORD | NO |  | In case that your mongo instance requires authentication |
+| MONGODB_AUTH_DB | NO |  | Name of the database you authenticating for |
 | MONGODB_OPLOG | NO | | Set this to `true` if you want to perform `mongodump` with `--oplog` flag on. [Read more](https://docs.mongodb.com/v3.4/reference/program/mongodump/#cmdoption-oplog) |
 | BACKUP_DIR | NO | /backup | Path to directory of the backup file. |
 | COLLECTION | NO |  | Adding `--collection` flag

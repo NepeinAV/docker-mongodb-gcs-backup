@@ -24,6 +24,11 @@ then
   CMD_AUTH_PART="--username=\"$MONGODB_USER\" --password=\"$MONGODB_PASSWORD\" "
 fi
 
+if [[ ! -z $MONGODB_AUTH_DB ]]
+then
+  CMD_AUTH_DB_PART="--authenticationDatabase=\"$MONGODB_AUTH_DB\" "
+fi
+
 if [[ ! -z $MONGODB_DB ]]
 then
   CMD_DB_PART="--db=\"$MONGODB_DB\" "
@@ -47,7 +52,7 @@ then
   CMD_EXCLUDE="--excludeCollection $EXCLUDE_COLLECTION "
 fi
 
-CMD="mongodump --host=\"$MONGODB_HOST\" --port=\"$MONGODB_PORT\" $CMD_AUTH_PART$CMD_DB_PART$CMD_OPLOG_PART$CMD_INCLUDE$CMD_EXCLUDE--gzip --archive=$BACKUP_DIR/$ARCHIVE_NAME"
+CMD="mongodump --host=\"$MONGODB_HOST\" --port=\"$MONGODB_PORT\" $CMD_AUTH_PART$CMD_AUTH_DB_PART$CMD_DB_PART$CMD_OPLOG_PART$CMD_INCLUDE$CMD_EXCLUDE--gzip --archive=$BACKUP_DIR/$ARCHIVE_NAME"
 
 echo "Running command: $CMD"
 
